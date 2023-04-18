@@ -56,7 +56,7 @@ boxes.forEach((box) => {
       if (playerOneChoices.length >= 3 || playerTwoChoices.length >= 3) {
         if (checkForWinner(playerOneChoices)) {
           winnerDeclaration.classList.toggle("show-winner");
-          winnerText.innerText = "The winner is player one!";
+          winnerText.innerText = "1. Oyuncu Kazandı!";
           winnerText.style.color = "#F2B147";
           //playerOneScore++
           addPlayerOneScore();
@@ -64,7 +64,7 @@ boxes.forEach((box) => {
           playerOnePlaceholder.innerText = sessionStorage.getItem("p1Score");
         } else if (checkForWinner(playerTwoChoices)) {
           winnerDeclaration.classList.toggle("show-winner");
-          winnerText.innerText = "The winner is player two!";
+          winnerText.innerText = "2. Oyuncu Kazandı!";
           winnerText.style.color = "#3CC4BF";
           addPlayerTwoScore();
           playerTwoPlaceholder.innerText = playerTwoScore;
