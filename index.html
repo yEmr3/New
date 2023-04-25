@@ -1,90 +1,87 @@
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="styles.css" />
-  <script
-    src="https://kit.fontawesome.com/3bfd3ce9e5.js"
-    crossorigin="anonymous"
-  ></script>
-  <title>Tic-Tac-Toe</title>
-</head>
-<body>
-  <main>
-    <div class="top">
-      <div class="exAndOh">
-        <i class="fa-solid fa-x"></i>
-        <i class="fa-solid fa-o"></i>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/index.css" />
+    <script
+      src="https://kit.fontawesome.com/3bfd3ce9e5.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Vanilla JS T3</title>
+  </head>
+  <body>
+    <main>
+      <div class="grid" data-id="grid">
+        <!-- Turn indicator -->
+        <div class="turn" data-id="turn">
+          <i class="fa-solid fa-x turquoise"></i>
+          <p class="turquoise">Player 1, you're up!</p>
+        </div>
+
+        <!-- Dropdown menu -->
+        <div class="menu" data-id="menu">
+          <button class="menu-btn" data-id="menu-btn">
+            Actions
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+
+          <div class="items border hidden" data-id="menu-items">
+            <button data-id="reset-btn">Reset</button>
+            <button data-id="new-round-btn">New Round</button>
+          </div>
+        </div>
+
+        <!-- Game board -->
+        <div id="1" class="square shadow" data-id="square"></div>
+        <div id="2" class="square shadow" data-id="square"></div>
+        <div id="3" class="square shadow" data-id="square"></div>
+        <div id="4" class="square shadow" data-id="square"></div>
+        <div id="5" class="square shadow" data-id="square"></div>
+        <div id="6" class="square shadow" data-id="square"></div>
+        <div id="7" class="square shadow" data-id="square"></div>
+        <div id="8" class="square shadow" data-id="square"></div>
+        <div id="9" class="square shadow" data-id="square"></div>
+
+        <!-- Scoreboard -->
+        <div class="score shadow" style="background-color: var(--turquoise)">
+          <p>Player 1</p>
+          <span data-id="p1-wins">0 Wins</span>
+        </div>
+        <div class="score shadow" style="background-color: var(--light-gray)">
+          <p>Ties</p>
+          <span data-id="ties">0</span>
+        </div>
+        <div class="score shadow" style="background-color: var(--yellow)">
+          <p>Player 2</p>
+          <span data-id="p2-wins">0 Wins</span>
+        </div>
       </div>
-      <section class="turn">
-        <h3 id="colorChange"><i class="fa-solid fa-x" id="turn"></i> TURN</h3>
-      </section>
-      <div>
-        <button class="clearScore" id="clear-score">Skoru Temizle!</button>
-      </div>
-    </div>
-    <div class="middle">
-      <ul>
-        <li class="box" id="1"></li>
-        <li class="box" id="2"></li>
-        <li class="box" id="3"></li>
-        <li class="box" id="4"></li>
-        <li class="box" id="5"></li>
-        <li class="box" id="6"></li>
-        <li class="box" id="7"></li>
-        <li class="box" id="8"></li>
-        <li class="box" id="9"></li>
-      </ul>
-    </div>
-    <div class="bottom">
-      <ul>
-        <li class="player-one-score">
-          <p>X(Player 1)</p>
-          <span id="player-one-score">0</span>
-        </li>
-        <li class="tie-score">
-          <p>TIES</p>
-          <span id="tie-score">0</span>
-        </li>
-        <li class="player-two-score">
-          <p>O(Player 2)</p>
-          <span id="player-two-score">0</span>
-        </li>
-      </ul>
-    </div>
-    <div class="winner show-winner" id="winner-declaration">
-      <h4 id="winner-text"></h4>
-      <button class="restart-after-win" id="restart-after-win">
-        Play again :)
-      </button>
-    </div>
-  </main>
-      <footer>
+    </main>
+
+    <footer>
       <p>
-        Bu oyun
-        <a href="https://www.youtube.com/@zachgoll">Zach Gollwitzer</a> Youtube
-        kanalından ilham alınarak Türkçe diline uygun şekilde, Yunus Emre Süngü
-        tarafından tekrar dizayn edilmiştir. İyi Eğlenceler :)
-      </p>
-      <p>
-        Based on
-        <a href="https://www.youtube.com/@zachgoll">Zach Gollwitzer</a> Youtube
-        Channel this game Refactored for Turkish Language by Yunus Emre Süngü
+        Original project by
+        <a href="https://twitter.com/megfdev">@megfdev</a> and
+        <a href="https://twitter.com/Ivan00sto">@Ivan00Sto</a>
       </p>
 
       <p>
-        My
-        <a href="https://github.com/yEmr3" style="color: var(--yellow)"
-          >GitHub</a
+        Refactored by
+        <a href="https://twitter.com/zg_dev" style="color: var(--turquoise)"
+          >@zg_dev</a
         >
-        and
-        <a
-          href="https://www.linkedin.com/in/yunus-emre-s%C3%BCng%C3%BC-b5a185148/"
-          style="color: var(--yellow)"
-          >Linkedln</a
-        >
-        profiles.
       </p>
     </footer>
-</body>
-<script src="main.js"></script>
+
+    <!-- Modal that opens when game ends -->
+    <div class="modal hidden" data-id="modal">
+      <div class="modal-contents">
+        <p data-id="modal-text">Player 1 wins!</p>
+        <button data-id="modal-btn">Play again</button>
+      </div>
+    </div>
+
+    <script src="js/app.js" type="module"></script>
+  </body>
+</html>
